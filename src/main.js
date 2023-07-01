@@ -8,12 +8,10 @@ import './public-path'
 Vue.config.productionTip = false
 // 判断qiankun环境
 const __qiankun__ = window.__POWERED_BY_QIANKUN__
-console.log(111);
 
-let instance;
+let instance,logout,closeCurrentPage;
 const render = (props={})=>{
  const { container } = props
- console.log('child:[render]',container);
  instance = new Vue({
   router,
   store,
@@ -24,11 +22,19 @@ const render = (props={})=>{
 
 
 export async function bootstrap() {
-  console.log('[vue] vue app bootstraped');
+  // console.log('[vue] vue app bootstraped');
 }
 export async function mount(props) {
   console.log('[vue] props from main framework', props);
-  render(props);
+  const { onGlobalStateChange, name } = props
+  onGlobalStateChange(state => {
+    console.log(state);
+    closeCurrentPage = state.closeCurrentPage
+    logout = state.logout
+  })
+  setTimeout(() => {
+    render(props);
+  });
 }
 export async function unmount() {
   instance.$destroy();

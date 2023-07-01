@@ -14,6 +14,26 @@ const routes = [
     path: '/about',
     name: 'about',
     component: () => import('../views/AboutView.vue')
+  },
+  {
+    path:'/order',
+    name:'micro-order',
+    meta:{
+      title:'工单',
+      isMicro:true
+    },
+    component: () => import('../views/Order.vue')
+    // children:[
+    //   {
+    //     path:'list',
+    //     name:'micro-list',
+    //     meta:{
+    //       title:'工单列表',
+    //       isMicro:true
+    //     },
+    //     component:()=> import('../views/Order.vue')
+    //   }
+    // ]
   }
 ]
 

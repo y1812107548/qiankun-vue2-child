@@ -1,7 +1,7 @@
 const { defineConfig } = require('@vue/cli-service')
 const { name } = require('./package')
 module.exports = defineConfig({
-  // publicPath:"/" + name,
+  publicPath:"/" + name,
   transpileDependencies: true,
   devServer:{
     port:'8090',
